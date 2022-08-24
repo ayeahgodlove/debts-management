@@ -6,10 +6,8 @@ const colors = require("colors");
 const cors = require("cors");
 require("dotenv").config();
 
-//Database connections
-// const {connectMongoDB} = require("./config/db.config");
+//Database connection
 const {connectMysQLDB} = require("./config/db-mysql.config");
-// const {connectPostgresDB} = require("./config/db-postgres.config");
 
 const PORT = process.env.PORT;
 
@@ -37,19 +35,13 @@ app.use(morgan("combined", { stream: accessLogStream }));
 app.use(express.static('public'));
 
 // call database connection
-connectMongoDB();
 connectMysQLDB();
-connectPostgresDB();
 
 // app documentation routes
 app.get("/documentation", (req, res) => {
   res.sendFile("public/index.html", { root: __dirname });
 });
 
-app.use('/api/movies', require('./routes/movie.routes'));
-app.use('/api/actors', require('./routes/actor.routes'));
-app.use('/api/directors', require('./routes/director.routes'));
-app.use('/api/genres', require('./routes/genre.routes'));
 app.use('/api/users', require('./routes/user.routes'));
 
 // app.use('/api/tvshows', require('./routes/tvshow.routes'));
