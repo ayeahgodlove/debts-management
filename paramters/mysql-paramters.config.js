@@ -2,7 +2,7 @@ module.exports = {
   HOST: "http://localhost:5000",
   USER: "root",
   PASSWORD: "",
-  DB: "christain-movies-app",
+  DB: "debt_management_db",
   dialect: "mysql",
   pool: {
     max: 5,

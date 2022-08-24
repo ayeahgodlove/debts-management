@@ -7,9 +7,9 @@ const cors = require("cors");
 require("dotenv").config();
 
 //Database connections
-const {connectMongoDB} = require("./config/db.config");
+// const {connectMongoDB} = require("./config/db.config");
 const {connectMysQLDB} = require("./config/db-mysql.config");
-const {connectPostgresDB} = require("./config/db-postgres.config");
+// const {connectPostgresDB} = require("./config/db-postgres.config");
 
 const PORT = process.env.PORT;
 
@@ -18,6 +18,7 @@ const app = express();
 const corsOptions = {
   originReactFrontend: "http://localhost:3000",
   originReactNative: "http://localhost:1902",
+  angularFrontend: "http://localhost:4200/"
 }
 
 // manage cors policies
@@ -56,3 +57,4 @@ app.use('/api/users', require('./routes/user.routes'));
 app.listen(PORT, () => {
   console.log(`Your app is listening on port ${PORT}.`);
 });
+
